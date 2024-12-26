@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Pull SCM') {
             steps {
-                git branch: 'main', url: 'https://github.com/alihasangithb/simple-apps.git'
+                git branch: 'main', url:'https://github.com/alihasangithb/simple-apps.git'
             }
         }
         
         stage('Build') {
             steps {
                 sh'''
-                cd app
+                cd apps
                 npm install
                 '''
             }
@@ -30,7 +30,7 @@ pipeline {
         stage('Code Review') {
             steps {
                 sh'''
-                cd app
+                cd apps
                 sonar-scanner \
                     -Dsonar.projectKey=simple-apps- \
                     -Dsonar.sources=. \
